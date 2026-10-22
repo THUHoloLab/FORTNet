@@ -2,9 +2,13 @@
 
 **Fibre Observation Reliability Transport Network** reconstructs single-frame multi-core fibre (MCF) images under exposure variation.
 
-- **Geometry-aware observations:** raw RGB, normalized RGB, a dense core field and pixel geometry represent the fibre measurements.
-- **Multiscale Transformer:** window and scene attention recover image structure, followed by gated local processing for detail synthesis.
-- **Observation Reliability Adapter (ORA):** core-level content is transported to the decoder using geometry and observation-dependent reliability weights.
+MCF images contain a discrete fibre-core sampling pattern, while changes in exposure can weaken local contrast, alter colour and clip bright regions. FORTNet combines spatial reconstruction with observation-dependent feature transport to suppress sampling artifacts and recover scene content across nominal, underexposed and overexposed captures.
+
+- **Geometry-aware observation representation:** raw RGB, globally normalized RGB, a dense field interpolated from core measurements and pixel geometry form a 12-channel input. These complementary views retain measured intensity while providing the backbone with spatially connected observations and the fibre sampling structure.
+- **Multiscale Transformer reconstruction:** window attention captures local relationships, and scene attention at the coarsest scale models broader image structure. Skip connections, learned upsampling and gated local blocks combine these features before full-resolution RGB synthesis.
+- **Observation Reliability Adapter (ORA):** core descriptors encode raw and normalized photometric information, intensity scale and clipping. Learned weights, modulated by clipping and neighbourhood consistency, control geometry-based, normalized transport of core content to the decoder. The resulting content and reliability maps enter the final decoder fusion and share the same RGB output path.
+
+The full model has **20.19 million parameters** and maps one **368 × 368 RGB** MCF frame to a reconstructed RGB image at the same resolution. Inference uses the supplied fixed fibre geometry and does not require an exposure label or multiple input frames.
 
 ![FORTNet architecture](docs/fortnet_architecture.png)
 
