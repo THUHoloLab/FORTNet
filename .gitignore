@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.venv/
+.env
+datasets/
+outputs/
+*.tmp
+*.part
+*.log
+*.pt
+!checkpoints/fortnet_best.pt

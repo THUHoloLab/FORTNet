@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fortnet"
+version = "1.0.0"
+description = "Fibre Observation Reliability Transport Network for multi-core fibre image reconstruction"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["torch==2.11.0", "numpy==1.26.4", "scipy==1.17.1", "Pillow==12.2.0", "huggingface-hub==2.2.0"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+fortnet-train = "fortnet.training:main"
+fortnet-evaluate = "fortnet.evaluation:main"
+fortnet-infer = "fortnet.inference:main"
+fortnet-download = "fortnet.download:main"
+
+[tool.setuptools.packages.find]
+include = ["fortnet"]
+
+[tool.setuptools.package-data]
+fortnet = ["assets/*.npz", "assets/*.json", "assets/*.sha256"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

@@ -1,0 +1,29 @@
+{
+  "split": "test",
+  "scenes": [
+    {
+      "identity": "000244",
+      "description": "Circular sign",
+      "paper_use": "Qualitative reconstruction comparison"
+    },
+    {
+      "identity": "000370",
+      "description": "Toy figures",
+      "paper_use": "Qualitative reconstruction comparison"
+    },
+    {
+      "identity": "000400",
+      "description": "House and greenery",
+      "paper_use": "Acquisition and dataset illustration"
+    }
+  ],
+  "conditions": [
+    "nominal",
+    "dark_025",
+    "dark_050",
+    "bright_150",
+    "bright_200"
+  ],
+  "image_format": "Unmodified full-resolution 368 x 368 RGB PNG",
+  "note": "All five exposure conditions are supplied for each paper scene. The qualitative paper figure displays selected conditions and crops."
+}
